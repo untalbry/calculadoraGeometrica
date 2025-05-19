@@ -9,22 +9,21 @@
     <meta name="keywords" content="calculadora, áreas, perímetros, figuras geométricas">
 
     <link rel="stylesheet" href="styles/index.css">
-    <script src="scripts/main.js" defer></script>
+    <script type="module" src="scripts/main.mjs" defer></script>
 </head>
 <body>
+    <nav>        
+    </nav>
     <main>
-        <nav>
-            
-        </nav>
-        <section>
-            <div class="configuration">
-                <label for="">Selecciona una figura</label>
+        <section class="left-menu">
+            <div class="left-menu__configuration">
+                <label id="selectShapeLabel">Selecciona una figura</label>
                 <select class="combobox">
-                    <option>Triangulo</option>
-                    <option>Circulo</option>
-                    <option>Cuadrado</option>
+                    <option id="optionTriangle">📐Triangulo</option>
+                    <option>🔵Circulo</option>
+                    <option>🟧Cuadrado</option>
                 </select>
-                <label for="">Selecciona cálculo</label>
+                <label id="selectCalculationLabel">Selecciona cálculo</label>
                 <select class="combobox">
                     <option>Perímetro</option>
                     <option>Área</option>
