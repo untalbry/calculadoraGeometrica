@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geocal</title>
+    <meta name="author" content="untalbry">
+    <meta name="description" content="Calculadora de áreas y perímetros de figuras geométricas.">
+    <meta name="keywords" content="calculadora, áreas, perímetros, figuras geométricas">
+
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="scripts/main.js" defer></script>
+</head>
+<body>
+    <main>
+        <nav>
+            
+        </nav>
+        <section>
+            <div class="configuration">
+                <label for="">Selecciona una figura</label>
+                <select class="combobox">
+                    <option>Triangulo</option>
+                    <option>Circulo</option>
+                    <option>Cuadrado</option>
+                </select>
+                <label for="">Selecciona cálculo</label>
+                <select class="combobox">
+                    <option>Perímetro</option>
+                    <option>Área</option>
+                </select>
+            </div>
+            <div class="inputs">
+                <label id="baseLabel">Base</label>
+                <input type="text" class="input" placeholder="Base">
+
+                <label id="heightLabel">Altura</label>
+                <input type="text" class="input" placeholder="Altura">
+
+                <label id="radioLabel">Radio</label>
+                <input type="text" class="input" placeholder="Radio">
+
+                <label id="sizeLabel">Lado</label>
+                <input type="text" class="input" placeholder="Lado">
+
+                <label id="resultLabel">Resultado</label>
+                <input type="text" class="input" placeholder="Resultado" disabled>
+
+                <button class="btn" id="calculateBtn">Calcular</button>
+                <button class="btn" id="cleanBtn">Limpiar</button>
+            </div>
+        </section>
+        <section>
+            <canvas id="canvas" width="400" height="400" style="border: 1px solid #000;"></canvas>
+        </section>
+    </main>
+</body>
+</html>
