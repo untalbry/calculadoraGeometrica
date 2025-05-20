@@ -1,9 +1,8 @@
-import { drawTriangle } from "./drawer.mjs";
+import { setShape } from "./formHandler.mjs";
 
 const init = () => {
-    document.getElementById("optionTriangle").addEventListener("click", drawTriangle());
+    const combobox = document.getElementById('shapesCombobox');
+    combobox.addEventListener('change', setShape);
 }
-
 document.addEventListener("DOMContentLoaded", init);
 
- 

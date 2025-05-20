@@ -18,10 +18,11 @@
         <section class="left-menu">
             <div class="left-menu__configuration">
                 <label id="selectShapeLabel">Selecciona una figura</label>
-                <select class="combobox">
-                    <option id="optionTriangle">📐Triangulo</option>
-                    <option>🔵Circulo</option>
-                    <option>🟧Cuadrado</option>
+                <select class="combobox" id="shapesCombobox">
+                    <option disabled selected value="">Selecciona una figura...</option>
+                    <option id="optionTriangle">Triangulo</option>
+                    <option id="optionCirculo">Circulo</option>
+                    <option id="optionCuadrado">Cuadrado</option>
                 </select>
                 <label id="selectCalculationLabel">Selecciona cálculo</label>
                 <select class="combobox">
