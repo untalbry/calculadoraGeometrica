@@ -1,8 +1,6 @@
 const PI = Math.PI;
 
-// Funciones de cálculo para las figuras
 const calculators = {
-  // Triángulo
   triangleArea: (inputs) => {
     const base = parseFloat(inputs.base.value);
     const height = parseFloat(inputs.height.value);
@@ -15,7 +13,6 @@ const calculators = {
     return side1 + side2 + side3;
   },
   
-  // Cuadrado
   squareArea: (inputs) => {
     const side = parseFloat(inputs.side.value);
     return side * side;
@@ -25,7 +22,6 @@ const calculators = {
     return 4 * side;
   },
   
-  // Círculo
   circleArea: (inputs) => {
     const radius = parseFloat(inputs.radius.value);
     return PI * radius * radius;
@@ -38,24 +34,21 @@ const calculators = {
 
 export function initCalculator() {
   document.addEventListener('click', function(event) {
+    // Verificar si el elemento clickeado es un botón de cálculo
     if (event.target.tagName === 'BUTTON' && calculators[event.target.id]) {
       calculateResult(event.target.id);
     }
   });
 }
 
-// Función que recopila los inputs y calcula el resultado
 function calculateResult(calculationType) {
-  // Obtener el formulario y sus inputs
   const form = document.getElementById('calculateForm');
   const inputs = {};
-  
-  // Recopilar todos los inputs del formulario
+
   Array.from(form.querySelectorAll('input')).forEach(input => {
     inputs[input.name] = input;
   });
   
-  // Validar que todos los campos requeridos estén presentes
   const requiredInputs = Array.from(form.querySelectorAll('input[required]'));
   const allValid = requiredInputs.every(input => input.validity.valid);
   
@@ -65,10 +58,7 @@ function calculateResult(calculationType) {
   }
   
   try {
-    // Calcular el resultado
     const result = calculators[calculationType](inputs);
-    
-    // Mostrar el resultado
     displayResult(result, calculationType);
   } catch (error) {
     console.error('Error al calcular:', error);
@@ -78,39 +68,37 @@ function calculateResult(calculationType) {
 
 // Función para mostrar el resultado en la interfaz
 function displayResult(result, calculationType) {
-  // Crear o actualizar el elemento de resultado
+  // Buscar o crear el elemento de resultado
   let resultElement = document.getElementById('result');
   
   if (!resultElement) {
     resultElement = document.createElement('div');
     resultElement.id = 'result';
-    document.body.appendChild(resultElement);
+    const calculateForm = document.getElementById('calculateForm');
+    
+    // Si el formulario tiene un elemento siguiente, insertarlo antes
+    // de lo contrario, añadirlo como hijo del padre del formulario
+    if (calculateForm.parentNode) {
+      calculateForm.parentNode.insertBefore(resultElement, calculateForm.nextSibling);
+    }
   }
   
   // Formatear el resultado según el tipo de cálculo
   const formattedResult = result.toFixed(2);
-  const calculationTypeText = calculationType.includes('Area') ? 'Área' : 'Perímetro';
+  const calculationTypeText = calculationType.includes('Area') ? 'area' : 'perímetro';
   const shapeText = getShapeText(calculationType);
   
-  // Actualizar el contenido
   resultElement.innerHTML = `
-    <h3>Resultado:</h3>
-    <p>El ${calculationTypeText} del ${shapeText} es: <strong>${formattedResult}</strong> ${getUnits(calculationType)}</p>
+    <div class="result-container">
+      <h3>Resultado:</h3>
+      <p>El ${calculationTypeText} del ${shapeText} es: <strong>${formattedResult}</strong></p>
+    </div>
   `;
-  
-  // Hacer visible el resultado
-  resultElement.style.display = 'block';
 }
 
-// Función auxiliar para obtener el nombre de la figura
 function getShapeText(calculationType) {
   if (calculationType.includes('triangle')) return 'triángulo';
   if (calculationType.includes('square')) return 'cuadrado';
   if (calculationType.includes('circle')) return 'círculo';
   return 'elemento';
-}
-
-// Función auxiliar para obtener las unidades según el tipo de cálculo
-function getUnits(calculationType) {
-  return calculationType.includes('Area') ? 'unidades²' : 'unidades';
 }
