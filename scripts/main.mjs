@@ -6,7 +6,7 @@ const init = () => {
     configugationForm.addEventListener('submit', setShape);
 
     initCalculator();
-    console.log("Es horrible me encanta");
+    console.log("Es horrible");
 }
 document.addEventListener("DOMContentLoaded", init);
 
