@@ -7,7 +7,7 @@ export function setShape(event) {
   const shape = formData.get("shapes");
   const calculations = formData.get("calculations");
 
-  const parent = document.getElementById("inputs");
+  const parent = document.getElementById("calculateForm");
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
@@ -20,11 +20,12 @@ export function setShape(event) {
     input.required = true;
     return input;
   }
-  function createButton(name, text) {
+  function createButton(name, text, id) {
     const button = document.createElement("button");
     button.type = "button";
     button.name = name;
     button.textContent = text;
+    button.id = id;
     return button;
   }
 
@@ -35,54 +36,52 @@ export function setShape(event) {
         area: [
           createInput("base", "base"),
           createInput("height", "height"),
-          createButton("calculateArea", "Calcular Area")
+          createButton("calculateArea", "Calcular Area", "triangleArea"),
         ],
         perimeter: [
           createInput("side1", "lado 1"),
           createInput("side2", "lado 2"),
           createInput("side3", "lado 3"),
-          createButton("calculatePerimeter", "Calcular Perimetro")
-
-        ]
-      }
+          createButton("calculatePerimeter", "Calcular Perimetro", "trianglePerimeter"),
+        ],
+      },
     },
     square: {
       draw: drawSquare,
       inputs: {
         area: [
-            createInput("side", "lado"),
-            createButton("calculateArea", "Calcular Area")
+          createInput("side", "lado"),
+          createButton("calculateArea", "Calcular Area", "squareArea"),
         ],
         perimeter: [
-            createInput("side", "lado"),
-            createButton("calculatePerimeter", "Calcular Perimetro")]
-      }
+          createInput("side", "lado"),
+          createButton("calculatePerimeter", "Calcular Perimetro", "squarePerimeter"),
+        ],
+      },
     },
     circle: {
       draw: drawCircle,
       inputs: {
         area: [
-            createInput("radius", "radio"),
-            createButton("calculateArea", "Calcular Area")
-
+          createInput("radius", "radio"),
+          createButton("calculateArea", "Calcular Area" , "circleArea"),
         ],
         perimeter: [
-            createInput("radius", "radio"),
-            createButton("calculatePerimeter", "Calcular Perimetro")
-        
+          createInput("radius", "radio"),
+          createButton("calculatePerimeter", "Calcular Perimetro", "circlePerimeter"),
         ],
-      }
-    }
+      },
+    },
   };
 
   if (shapeActions[shape]) {
     shapeActions[shape].draw();
-    
+
     const inputs = shapeActions[shape].inputs[calculations];
     if (inputs) {
-      inputs.slice().reverse().forEach(input => {
-        parent.insertBefore(input, parent.firstChild);
-      });
+      inputs.slice().reverse().forEach((input) => {
+          parent.insertBefore(input, parent.firstChild);
+        });
     }
   } else {
     console.error("Figura desconocida seleccionada");
