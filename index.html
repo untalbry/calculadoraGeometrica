@@ -17,35 +17,25 @@
     <main>
         <section class="left-menu">
             <div class="left-menu__configuration">
-                <label id="selectShapeLabel">Selecciona una figura</label>
-                <select class="combobox" id="shapesCombobox">
-                    <option disabled selected value="">Selecciona una figura...</option>
-                    <option id="optionTriangle">Triangulo</option>
-                    <option id="optionCirculo">Circulo</option>
-                    <option id="optionCuadrado">Cuadrado</option>
-                </select>
-                <label id="selectCalculationLabel">Selecciona cálculo</label>
-                <select class="combobox">
-                    <option>Perímetro</option>
-                    <option>Área</option>
-                </select>
+                <form id="configugationForm">
+                    <label id="selectShapeLabel">Selecciona una figura</label>
+                    <select class="combobox" id="shapesCombobox" name="shapes">
+                        <option disabled selected value="">Selecciona una figura...</option>
+                        <option value="triangle">Triangulo</option>
+                        <option value="circle">Circulo</option>
+                        <option value="square">Cuadrado</option>
+                    </select>
+                    <label id="selectCalculationLabel">Selecciona cálculo</label>
+                    <select class="combobox" id="calculationCombobox" name="calculations">
+                        <option disabled selected value="">Selecciona un cálculo...</option>
+                        <option value="perimeter">Perímetro</option>
+                        <option value="area">Área</option>
+                    </select>
+                    <button>Click me</button>
+                </form>
+                
             </div>
-            <div class="inputs">
-                <label id="baseLabel">Base</label>
-                <input type="text" class="input" placeholder="Base">
-
-                <label id="heightLabel">Altura</label>
-                <input type="text" class="input" placeholder="Altura">
-
-                <label id="radioLabel">Radio</label>
-                <input type="text" class="input" placeholder="Radio">
-
-                <label id="sizeLabel">Lado</label>
-                <input type="text" class="input" placeholder="Lado">
-
-                <label id="resultLabel">Resultado</label>
-                <input type="text" class="input" placeholder="Resultado" disabled>
-
+            <div class="inputs" id="inputs">
                 <button class="btn" id="calculateBtn">Calcular</button>
                 <button class="btn" id="cleanBtn">Limpiar</button>
             </div>
