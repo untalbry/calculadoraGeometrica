@@ -17,7 +17,7 @@
     <main>
         <section class="left-menu">
             <div class="left-menu__configuration">
-                <form id="configugationForm">
+                <form class="left-menu__configuration__form" id="configugationForm">
                     <label id="selectShapeLabel">Selecciona una figura</label>
                     <select class="combobox" id="shapesCombobox" name="shapes">
                         <option disabled selected value="">Selecciona una figura...</option>
@@ -31,15 +31,15 @@
                         <option value="perimeter">Perímetro</option>
                         <option value="area">Área</option>
                     </select>
-                    <button>Click me</button>
+                    <button>Seleccionar</button>
                 </form>
                 
             </div>
-            <form class="calculate-form" id="calculateForm">
+            <form class="left-menu__configuration__form" id="calculateForm">
             </form>
         </section>
-        <section>
-            <canvas id="canvas" width="400" height="400" style="border: 1px solid #000;"></canvas>
+        <section class="right-section">
+            <canvas id="canvas" width="400" height="400"></canvas>
         </section>
     </main>
 </body>

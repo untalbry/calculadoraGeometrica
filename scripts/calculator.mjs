@@ -66,9 +66,7 @@ function calculateResult(calculationType) {
   }
 }
 
-// Función para mostrar el resultado en la interfaz
 function displayResult(result, calculationType) {
-  // Buscar o crear el elemento de resultado
   let resultElement = document.getElementById('result');
   
   if (!resultElement) {
